@@ -17,7 +17,7 @@ function bruteforce(arr){
 let arr=[1,1,2,2,3,4,4];
 // console.log(bruteforce(arr));
 
-//better solution using hash
+// better solution using hash and map
 
 function bettersol(arr){
     let max=arr[0];
@@ -37,7 +37,24 @@ function bettersol(arr){
     }
 }
 
-// console.log(bettersol(arr));
+function mapsol(arr){
+    let map1=new Map();
+    for(let value of arr){
+        if(map1.has(value)){
+            map1.set(value,map1.get(value)+1);
+        }else{
+            map1.set(value,1);
+        }
+    }
+    for(let [key,value] of map1){
+        if(value===1){
+            return key;
+        }
+    }
+
+}
+
+// console.log(mapsol(arr));
 
 //optimized solution
 
