@@ -28,3 +28,28 @@ function sort012(arr){
 let arr=[0,1,2,0,1,2];
 console.log(sort012(arr));
 
+// dutch natinal flag algorithm
+
+function sort1(arr){
+    let low=0;
+    let high=arr.length-1;
+    let mid=0;
+    while(mid<=high){
+        if(arr[mid]===0){
+            [arr[mid],arr[low]]=[arr[low],arr[mid]];
+            mid++;
+            low++;
+        }else if(arr[mid]==1){
+            mid++;
+        }else{
+            [arr[mid],arr[high]]=[arr[high],arr[mid]];
+            high--;
+        }
+    }
+    return arr;
+}
+
+let arr2=[0,1,2,0,1,1,2,2];
+ console.log(sort1(arr2));
+
+ 
