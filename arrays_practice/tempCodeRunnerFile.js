@@ -1,25 +1,38 @@
-function longest2(arr){
-    if(arr.length===0){
-        return 0;
-    }
-    let longest=1;
-    let set=new Set();
-    for(let num of arr){
-        set.add(num);
-    }
-    for(let num of set){
-        if(!set.has(num-1)){
-            let count=1;
-            let current=num;
-            while(set.has(current+1)){
-                count++;
-                current++;
-            }
-            longest=Math.max(longest,count);
+//merge two sorted arrays without extra space
+
+function merge(arr1,arr2,n,m){
+    let left=0;
+    let right=0;
+    let index=0;
+    let arr3=new Array(n+m);
+    while(left<=n && right<=m){
+        if(arr1[left]<arr2[right]){
+            arr3[index]=arr1[left];
+            index++,left++;
+        }else{
+            arr3[index]=arr2[right];
+            index++,right++;
         }
     }
-    return longest;
+    while(left<n){
+        arr3[index]=arr1[left];
+        left++,index++;
+    }
+    while(right<m){
+        arr3[index]=arr2[right];
+        right++,index++;
+    }
+    for(let i=0;i<n+m;i++){
+        if(i<n){
+            arr1[i]=arr3[i];
+        }else{
+            arr2[i-n]=arr3[i];
+        }
+    }
+    return [arr1,arr2];
 }
 
-let arr2=[102,4,100,1,101,3,2,1,1]
-console.log(longest2(arr2))
+let arr1=[1,4,8];
+let arr2=[2,3,7];
+
+console.log(merge(arr1,arr2,arr1.length,arr2.length))
