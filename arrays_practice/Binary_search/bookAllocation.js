@@ -33,7 +33,7 @@ function allocateBooks(arr,m){
 let arr=[25,46,28,49,24];
 console.log(allocateBooks(arr,4));
 
-//using binary serch
+//using binary search
 
 function booksAllocated(arr,m){
     if(m>arr.length){
