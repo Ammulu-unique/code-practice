@@ -1,7 +1,7 @@
 //check if an array is sorted or not 
 
 function sort(arr,index){
-    if(index===arr.length-1){
+    if(index===arr.length-1){ //for empty array use index<=1
         return true;
     }
     return arr[index] < arr[index+1] && sort(arr,index+1);
